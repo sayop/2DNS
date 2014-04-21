@@ -1,0 +1,30 @@
+#Input file for tecplot print
+2-D Euler solver
+imax            65
+jmax            57
+ngl		3
+gridFile	NSgrid.dat
+#Initial conditions (SI)
+density		1.0
+u		1.0
+v		0.0
+pressure	0.1785714
+temp		1.0
+gamma		1.4
+#Free stream conditions
+dens_ref	0.01
+temp_ref	300.0
+Uvel_ref	694.44
+Leng_ref	1.0
+#Simulation parameters
+nmax		20000
+CFL		0.5
+errorLimit	1e-03
+#AUSMPW+ parameters
+alpha		0.0
+epsil		0
+limiter		0
+kappa		0.0
+#Viscous solver parameters
+visc		1
+wallT		300.0

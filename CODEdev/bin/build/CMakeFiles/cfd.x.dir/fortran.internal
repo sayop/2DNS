@@ -1,0 +1,13 @@
+# The fortran modules provided by this target.
+provides
+ ausmpwplus_m
+ bcvisc_m
+ gridjacobian_m
+ io_m
+ mainloop_m
+ parameters_m
+ readgrid_m
+ simulationsetup_m
+ simulationvars_m
+ timeintegration_m
+ viscflux_m
