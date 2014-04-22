@@ -26,5 +26,5 @@ epsil		0
 limiter		0
 kappa		0.0
 #Viscous solver parameters
-visc		0
+visc		1
 wallT		300.0

@@ -37,5 +37,5 @@ MODULE SimulationVars_m
 
    ! Upstream condition variables
    REAL(KIND=wp) :: DENS_REF, TEMP_REF, VEL_REF, LENGTH_REF, &
-                    MACH_REF
+                    MACH_REF, MU_REF, RE_REF
 END MODULE SimulationVars_m

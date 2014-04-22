@@ -52,9 +52,12 @@ CONTAINS
   SUBROUTINE SetInitialConditions()
 !-----------------------------------------------------------------------------!
 
-    USE SimulationVars_m, ONLY: V, cgamma, ifinish, U, UO, mach_ref, temp_ref
+    USE SimulationVars_m, ONLY: V, cgamma, ifinish, U, UO, mach_ref, temp_ref, &
+                                IVISC, MU_REF, RE_REF, DENS_REF, VEL_REF, &
+                                LENGTH_REF
     USE io_m, ONLY: rhoinit, uinit, vinit, pinit, tinit, cgammainit
     USE BCvisc_m, ONLY: wallTemp
+    USE VISCflux_m, ONLY: SutherlandLaw
 
     ! Set initial primative vector
     V(1,:,:) = rhoinit
@@ -67,6 +70,11 @@ CONTAINS
 
     mach_ref = sqrt(1.0_wp / (cgamma * pinit) )
     wallTemp = wallTemp / temp_ref
+
+    IF(IVISC .EQ. 1) THEN
+      MU_REF = SutherlandLaw(temp_ref,1)
+      RE_REF = DENS_REF * VEL_REF * LENGTH_REF / MU_REF
+    END IF
     
     ! Set initial state vector elements
     !U(1,:,:) = rhoinit

@@ -98,6 +98,8 @@ CMakeFiles/cfd.x.dir/main/SimulationSetup.F90.o.requires: CMakeFiles/cfd.x.dir/p
 CMakeFiles/cfd.x.dir/main/SimulationSetup.F90.o: CMakeFiles/cfd.x.dir/parameters_m.mod.stamp
 CMakeFiles/cfd.x.dir/main/SimulationSetup.F90.o.requires: CMakeFiles/cfd.x.dir/simulationvars_m.mod.proxy
 CMakeFiles/cfd.x.dir/main/SimulationSetup.F90.o: CMakeFiles/cfd.x.dir/simulationvars_m.mod.stamp
+CMakeFiles/cfd.x.dir/main/SimulationSetup.F90.o.requires: CMakeFiles/cfd.x.dir/viscflux_m.mod.proxy
+CMakeFiles/cfd.x.dir/main/SimulationSetup.F90.o: CMakeFiles/cfd.x.dir/viscflux_m.mod.stamp
 CMakeFiles/cfd.x.dir/simulationsetup_m.mod.proxy: CMakeFiles/cfd.x.dir/main/SimulationSetup.F90.o.provides
 CMakeFiles/cfd.x.dir/main/SimulationSetup.F90.o.provides.build:
 	$(CMAKE_COMMAND) -E cmake_copy_f90_mod simulationsetup_m CMakeFiles/cfd.x.dir/simulationsetup_m.mod.stamp GNU
