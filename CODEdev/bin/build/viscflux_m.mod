@@ -1,5 +1,5 @@
 GFORTRAN module version '10' created from /home/sayop/data/Devel/GitHub.Clones/2DNS/CODEdev/src/main/VISCflux/VISCflux.F90
-MD5:95cd22815bdcf38024c3fe36e69fad85 -- If you edit this, you'll get what you deserve.
+MD5:bdb2ee86c73dd59695893dcf513ff4f2 -- If you edit this, you'll get what you deserve.
 
 (() () () () () () () () () () () () () () () () () () () () () () ()
 () () () ())
@@ -14,41 +14,58 @@ MD5:95cd22815bdcf38024c3fe36e69fad85 -- If you edit this, you'll get what you de
 
 ()
 
-(2 'parameters_m' 'parameters_m' '' 1 ((MODULE UNKNOWN-INTENT
+(2 'heatflux' 'viscflux_m' '' 1 ((PROCEDURE UNKNOWN-INTENT MODULE-PROC
+DECL UNKNOWN 0 0 FUNCTION) (REAL 8 0 0 0 REAL ()) 3 0 (4 5 6 7) () 8 ()
+() () 0 0)
+9 'parameters_m' 'parameters_m' '' 1 ((MODULE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () ()
 0 () () () 0 0)
-3 'shearstress' 'viscflux_m' '' 1 ((PROCEDURE UNKNOWN-INTENT MODULE-PROC
-DECL UNKNOWN 0 0 FUNCTION) (REAL 4 0 0 0 REAL ()) 4 0 (5 6 7 8) () 9 ()
-() () 0 0)
-10 'sutherlandlaw' 'viscflux_m' '' 1 ((PROCEDURE UNKNOWN-INTENT
-MODULE-PROC DECL UNKNOWN 0 0 FUNCTION) (REAL 8 0 0 0 REAL ()) 11 0 (12
-13) () 14 () () () 0 0)
-15 'viscflux' 'viscflux_m' '' 1 ((PROCEDURE UNKNOWN-INTENT MODULE-PROC
+10 'shearstress' 'viscflux_m' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 FUNCTION) (REAL 4 0 0 0 REAL ()) 11 0 (12
+13 14 15 16) () 17 () () () 0 0)
+18 'sutherlandlaw' 'viscflux_m' '' 1 ((PROCEDURE UNKNOWN-INTENT
+MODULE-PROC DECL UNKNOWN 0 0 FUNCTION) (REAL 8 0 0 0 REAL ()) 19 0 (20
+21) () 22 () () () 0 0)
+23 'viscflux' 'viscflux_m' '' 1 ((PROCEDURE UNKNOWN-INTENT MODULE-PROC
 DECL UNKNOWN 0 0 SUBROUTINE) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 0 ()
 () () 0 0)
-16 'viscflux_m' 'viscflux_m' '' 1 ((MODULE UNKNOWN-INTENT UNKNOWN-PROC
+24 'viscflux_m' 'viscflux_m' '' 1 ((MODULE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () () 0 () () () 0
 0)
-17 'wp' 'parameters_m' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+25 'wp' 'parameters_m' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (
 CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '8') () 0 () () () 0 0)
-5 'i' '' '' 4 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+4 'i' '' '' 3 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
 DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
-6 'j' '' '' 4 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
+5 'j' '' '' 3 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0 0
 DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
-7 'i1' '' '' 4 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0
+6 'id' '' '' 3 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0
 0 DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
-8 'i2' '' '' 4 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0
+7 'axis' '' '' 3 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
+0 0 DUMMY) (CHARACTER 1 0 0 0 CHARACTER ((CONSTANT (INTEGER 4 0 0 0
+INTEGER ()) 0 '1'))) 0 0 () () 0 () () () 0 0)
+8 'hf' '' '' 3 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0
+0 RESULT) (REAL 8 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+12 'i' '' '' 11 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0
 0 DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
-9 'tau' '' '' 4 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0
-0 RESULT) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
-12 'temp' '' '' 11 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
-UNKNOWN 0 0 DUMMY) (REAL 8 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
-13 'isu' '' '' 11 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
+13 'j' '' '' 11 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN 0
+0 DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+14 'i1' '' '' 11 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
 0 0 DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
-14 'su' '' '' 11 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
+15 'i2' '' '' 11 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
+0 0 DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+16 'axis' '' '' 11 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0 DUMMY) (CHARACTER 1 0 0 0 CHARACTER ((CONSTANT (INTEGER 4 0
+0 0 INTEGER ()) 0 '1'))) 0 0 () () 0 () () () 0 0)
+17 'tau' '' '' 11 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
+0 0 RESULT) (REAL 4 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+20 'temp' '' '' 19 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN
+UNKNOWN 0 0 DUMMY) (REAL 8 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
+21 'isu' '' '' 19 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
+0 0 DUMMY) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () () () 0 0)
+22 'su' '' '' 19 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC UNKNOWN UNKNOWN
 0 0 RESULT) (REAL 8 0 0 0 REAL ()) 0 0 () () 0 () () () 0 0)
 )
 
-('parameters_m' 0 2 'shearstress' 0 3 'sutherlandlaw' 0 10 'viscflux' 0
-15 'viscflux_m' 0 16 'wp' 0 17)
+('heatflux' 0 2 'parameters_m' 0 9 'shearstress' 0 10 'sutherlandlaw' 0
+18 'viscflux' 0 23 'viscflux_m' 0 24 'wp' 0 25)

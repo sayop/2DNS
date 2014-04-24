@@ -16,6 +16,7 @@ dens_ref	0.01
 temp_ref	300.0
 Uvel_ref	694.44
 Leng_ref	1.0
+Cp		1003.5
 #Simulation parameters
 nmax		20000
 CFL		0.5

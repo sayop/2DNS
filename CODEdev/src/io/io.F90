@@ -21,7 +21,7 @@ CONTAINS
 !-----------------------------------------------------------------------------!
      USE SimulationVars_m, ONLY: imax, jmax, ngl, nmax, errLimit, &
                                  dens_ref, temp_ref, vel_ref, length_ref, &
-                                 ivisc
+                                 cp, ivisc
      USE TimeIntegration_m, ONLY: CFL
      USE AUSMPWplus_m, ONLY: alpha, epsil, kappa, limiter
      USE BCvisc_m, ONLY: wallTemp
@@ -77,6 +77,8 @@ CONTAINS
      WRITE(*,'(a,g15.6)') inputVar, vel_ref
      READ(IOunit,*) inputVar, length_ref
      WRITE(*,'(a,g15.6)') inputVar, length_ref
+     READ(IOunit,*) inputVar, CP
+     WRITE(*,'(a,g15.6)') inputVar, CP
 
      !Read Simulation parameters
      READ(IOunit,*)
