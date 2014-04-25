@@ -18,7 +18,7 @@ Uvel_ref	694.44
 Leng_ref	1.0
 Cp		1003.5
 #Simulation parameters
-restart		0
+restart		1
 nmax		40000
 CFL		0.5
 errorLimit	1e-09
@@ -31,5 +31,5 @@ kappa		-1.0
 visc		1
 wallT		300.0
 #Data Post-Processing (BL profile)
-xLoc            0.0
+xLoc            -0.25
 
