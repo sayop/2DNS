@@ -6,3 +6,4 @@ cp cfd.x ../
 cd ../
 
 cp ../src/io/input/input*.dat ./
+

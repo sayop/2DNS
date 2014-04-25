@@ -28,6 +28,10 @@ FILE(REMOVE
   "READGRID_M.mod"
   "CMakeFiles/cfd.x.dir/readgrid_m.mod.stamp"
 
+  "restartdataout_m.mod"
+  "RESTARTDATAOUT_M.mod"
+  "CMakeFiles/cfd.x.dir/restartdataout_m.mod.stamp"
+
   "simulationsetup_m.mod"
   "SIMULATIONSETUP_M.mod"
   "CMakeFiles/cfd.x.dir/simulationsetup_m.mod.stamp"

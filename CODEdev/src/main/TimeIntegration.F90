@@ -36,7 +36,7 @@ CONTAINS
 !-----------------------------------------------------------------------------!
   SUBROUTINE TimeIntegration()
 !-----------------------------------------------------------------------------!
-    USE SimulationVars_m, ONLY: imin, jmin, imax, jmax, U, UO, DF, ivisc
+    USE SimulationVars_m, ONLY: imin, jmin, imax, jmax, U, DF, ivisc
     USE GridJacobian_m, ONLY: JACOBIAN
     USE AUSMPWplus_m, ONLY: SetAUSMPWplus
     USE VISCflux_m, ONLY: VISCflux
@@ -59,7 +59,7 @@ CONTAINS
   SUBROUTINE CheckConvergence()
 !-----------------------------------------------------------------------------!
     USE SimulationVars_m, ONLY: imin, jmin, imax, jmax, U, UO, nadv, RMSerr, &
-                                errLimit, nadv, RMS1err, ifinish
+                                errLimit, nadv, RMS1err, ifinish, inadv
 
     INTEGER :: i, j, n, nTotal
     REAL(KIND=wp) :: error
@@ -77,8 +77,8 @@ CONTAINS
     END DO
     RMSerr = sqrt(error / nTotal)
 
-    IF(nadv .EQ. 1) RMS1err = RMSerr + 1.0E-9
-    RMSerr = RMSerr / RMS1err
+    IF(nadv .EQ. 1 .OR. nadv .EQ. inadv) RMS1err = RMSerr
+    RMSerr = RMSerr / (RMS1err + 1.0E-9)
     IF(RMSerr .LT. errLimit) ifinish = 1
 
     UO = U

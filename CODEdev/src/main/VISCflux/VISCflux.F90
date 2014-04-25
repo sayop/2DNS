@@ -177,29 +177,44 @@ CONTAINS
     USE SimulationVars_m, ONLY: V, TEMP, RE_REF, MU_REF, MACH_REF, CP, &
                                 cgamma
     USE GridJacobian_m, ONLY: PIPX, PIPY, PJPX, PJPY
-    REAL(KIND=wp) :: HF, PR, DTDI, DTDJ, DTDX, DTDY, MU
+    REAL(KIND=wp) :: HF, PR, DTDI, DTDJ, DTDX, DTDY, MU, K
     INTEGER :: i, j, id, ip, jp
     CHARACTER(LEN=1) :: axis
 
-    !Set Prandtl number
-    PR = CP * SutherlandLaw(TEMP(i,j),1) / SutherlandLaw(TEMP(i,j),2)
-    
     IF(axis .EQ. 'i') THEN
       ip = 1
       jp = 0
-      DTDI = TEMP(i+1,j) - TEMP(i,j)
-      DTDJ = 0.25_wp * ( TEMP(i+1,j+1) + TEMP(i,j+1) - &
-                         TEMP(i+1,j-1) - TEMP(i,j-1) )
+      !DTDI = TEMP(i+1,j) - TEMP(i,j)
+      DTDI = V(5,i+1,j) - V(5,i,j)
+      !DTDJ = 0.25_wp * ( TEMP(i+1,j+1) + TEMP(i,j+1) - &
+      !                   TEMP(i+1,j-1) - TEMP(i,j-1) )
+      DTDJ = 0.25_wp * ( V(5,i+1,j+1) + V(5,i,j+1) - &
+                         V(5,i+1,j-1) - V(5,i,j-1) )
     ELSE
       ip = 0
       jp = 1
-      DTDJ = TEMP(i,j+1) - TEMP(i,j)
-      DTDI = 0.25_wp * ( TEMP(i+1,j+1) + TEMP(i+1,j) - &
-                         TEMP(i-1,j-1) - TEMP(i-1,j) )
+      !DTDJ = TEMP(i,j+1) - TEMP(i,j)
+      DTDJ = V(5,i,j+1) - V(5,i,j)
+      !DTDI = 0.25_wp * ( TEMP(i+1,j+1) + TEMP(i+1,j) - &
+      !                   TEMP(i-1,j-1) - TEMP(i-1,j) )
+      DTDI = 0.25_wp * ( V(5,i+1,j+1) + V(5,i+1,j) - &
+                         V(5,i-1,j-1) - V(5,i-1,j) )
     END IF
 
+    !Dimensional viscosity
     MU = 0.5_wp * ( SutherlandLaw(TEMP(i+ip,j+jp),1) + &
-                    SutherlandLaw(TEMP(i,j),1) ) / MU_REF
+                    SutherlandLaw(TEMP(i,j),1) )
+    !Dimensional thermal conductivity
+    K = 0.5_wp * ( SutherlandLaw(TEMP(i+ip,j+jp),2) + &
+                   SutherlandLaw(TEMP(i,j),2) ) 
+
+
+    !Set Prandtl number
+    PR = CP * MU / K
+
+    !NonDimensionalize MU
+    MU = MU / MU_REF
+
     IF(id .EQ. 1) THEN
       !Set HeatFlux in x-direction: Q_x
       !Set DTDX

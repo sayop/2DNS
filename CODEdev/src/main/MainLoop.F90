@@ -14,12 +14,17 @@ CONTAINS
     USE io_m, ONLY: WriteErrorLog, WriteDataOut
     USE TimeIntegration_m
     USE SimulationVars_m, ONLY: nadv, nmax, imin, imax, jmin, jmax, V, U, RMSerr, &
-                                ifinish
+                                ifinish, inadv, restart
     USE SimulationSetup_m, ONLY: SetBoundaryConditions, SetTransformedVariables, &
                                  SetPrimativeVariables
+    USE RestartDataOut_m, ONLY: IORestartID, ReadRestartData
 
     INTEGER :: i,j
-    TimeLoop: DO nadv = 1, nmax
+    IF(restart .EQ. 1) THEN
+      CALL IORestartID(1)
+      CALL ReadRestartData()
+    END IF
+    TimeLoop: DO nadv = inadv, nmax
       CALL SetBoundaryConditions()
       CALL SetTimeStep()
       CALL TimeIntegration()
@@ -29,9 +34,9 @@ CONTAINS
       !CALL SetTransformedVariables()
       CALL CheckConvergence()
       IF(IFINISH .EQ. 1 .OR. nadv .EQ. nmax) THEN
-        WRITE(*,'(A27,I6,A10,g15.6)') 'NORMAL TERMINATION AT NADV=',nadv, &
-                                      'and RMSerr=',RMSerr
-        return
+        WRITE(*,'(A27,I6,A14,g15.6)') 'NORMAL TERMINATION AT NADV=',nadv, &
+                                      ' and RMSerr=',RMSerr
+        EXIT
       ELSE
         WRITE(*,'(A5,I6,A3,g15.6,A4,g15.6,A8,g15.6)') 'NADV=',nadv, &
                                                      'T=',t, 'DT=', dt, &
@@ -41,6 +46,8 @@ CONTAINS
     END DO TimeLoop
     CALL WriteErrorLog(nadv)
     CALL WriteDataOut()
+    ! Write Restart number by NADV
+    CALL IORestartID(2)
 
   END SUBROUTINE MainLoop
 END MODULE MainLoop_m

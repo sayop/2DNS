@@ -1,5 +1,5 @@
 GFORTRAN module version '10' created from /home/sayop/data/Devel/GitHub.Clones/2DNS/CODEdev/src/main/SimulationVars.F90
-MD5:583b0438d27cff1c68085cd8f12f3ded -- If you edit this, you'll get what you deserve.
+MD5:061d536935fbc0355e87c0e4ecb102de -- If you edit this, you'll get what you deserve.
 
 (() () () () () () () () () () () () () () () () () () () () () () ()
 () () () ())
@@ -53,112 +53,119 @@ UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
 14 'imin' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
 () 0 0)
-15 'incell' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+15 'inadv' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
 () () 0 () () () 0 0)
-16 'ires' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
-UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
-() 0 0)
-17 'ivisc' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+16 'incell' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
 () () 0 () () () 0 0)
-18 'jmax' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+17 'ires' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
 () 0 0)
-19 'jmin' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
-UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
-() 0 0)
-20 'jncell' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+18 'ivisc' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
 () () 0 () () () 0 0)
-21 'jres' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+19 'jmax' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
 () 0 0)
-22 'length_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+20 'jmin' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
+() 0 0)
+21 'jncell' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() () 0 () () () 0 0)
+22 'jres' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
+() 0 0)
+23 'length_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
 0 () () () 0 0)
-23 'mach' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+24 'mach' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (2 0 DEFERRED () () () ()) 0 () () () 0 0)
-24 'mach_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+25 'mach_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
 0 () () () 0 0)
-25 'mu_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+26 'mu_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
 0 () () () 0 0)
-26 'nadv' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+27 'nadv' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
 () 0 0)
-27 'ngl' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+28 'ngl' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
 () 0 0)
-28 'nmax' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+29 'nmax' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () () 0 () ()
 () 0 0)
-29 'parameters_m' 'parameters_m' '' 1 ((MODULE UNKNOWN-INTENT
+30 'parameters_m' 'parameters_m' '' 1 ((MODULE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () ()
 0 () () () 0 0)
-30 'pres' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+31 'pres' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (2 0 DEFERRED () () () ()) 0 () () () 0 0)
-31 're_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+32 're_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
 0 () () () 0 0)
-32 'rho' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+33 'restart' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0
+() () 0 () () () 0 0)
+34 'rho' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (2 0 DEFERRED () () () ()) 0 () () () 0 0)
-33 'rms1err' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+35 'rms1err' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
 0 () () () 0 0)
-34 'rmserr' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+36 'rmserr' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
 0 () () () 0 0)
-35 'simulationvars_m' 'simulationvars_m' '' 1 ((MODULE UNKNOWN-INTENT
+37 'simulationvars_m' 'simulationvars_m' '' 1 ((MODULE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN UNKNOWN 0 0) (UNKNOWN 0 0 0 0 UNKNOWN ()) 0 0 () ()
 0 () () () 0 0)
-36 'temp' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+38 'temp' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (2 0 DEFERRED () () () ()) 0 () () () 0 0)
-37 'temp_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+39 'temp_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
 0 () () () 0 0)
-38 'u' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+40 'u' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (3 0 DEFERRED () () () () () ()) 0 () () () 0 0)
-39 'ucon' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+41 'ucon' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (3 0 DEFERRED () () () () () ()) 0 () () () 0 0)
-40 'uo' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+42 'uo' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (3 0 DEFERRED () () () () () ()) 0 () () () 0 0)
-41 'up' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+43 'up' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (3 0 DEFERRED () () () () () ()) 0 () () () 0 0)
-42 'uvel' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+44 'uvel' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (2 0 DEFERRED () () () ()) 0 () () () 0 0)
-43 'v' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+45 'v' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (3 0 DEFERRED () () () () () ()) 0 () () () 0 0)
-44 'vel_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
+46 'vel_ref' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT
 UNKNOWN-PROC UNKNOWN IMPLICIT-SAVE 0 0) (REAL 8 0 0 0 REAL ()) 0 0 () ()
 0 () () () 0 0)
-45 'vvel' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+47 'vvel' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (2 0 DEFERRED () () () ()) 0 () () () 0 0)
-46 'wp' 'parameters_m' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
+48 'wp' 'parameters_m' '' 1 ((PARAMETER UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0) (INTEGER 4 0 0 0 INTEGER ()) 0 0 () (
 CONSTANT (INTEGER 4 0 0 0 INTEGER ()) 0 '8') () 0 () () () 0 0)
-47 'xp' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
+49 'xp' 'simulationvars_m' '' 1 ((VARIABLE UNKNOWN-INTENT UNKNOWN-PROC
 UNKNOWN IMPLICIT-SAVE 0 0 ALLOCATABLE DIMENSION) (REAL 8 0 0 0 REAL ())
 0 0 () (3 0 DEFERRED () () () () () ()) 0 () () () 0 0)
 )
 
 ('cgamma' 0 2 'cp' 0 3 'dens_ref' 0 4 'df' 0 5 'errlimit' 0 6 'f' 0 7 'fp'
 0 8 'g' 0 9 'gp' 0 10 'h0' 0 11 'ifinish' 0 12 'imax' 0 13 'imin' 0 14
-'incell' 0 15 'ires' 0 16 'ivisc' 0 17 'jmax' 0 18 'jmin' 0 19 'jncell'
-0 20 'jres' 0 21 'length_ref' 0 22 'mach' 0 23 'mach_ref' 0 24 'mu_ref'
-0 25 'nadv' 0 26 'ngl' 0 27 'nmax' 0 28 'parameters_m' 0 29 'pres' 0 30
-'re_ref' 0 31 'rho' 0 32 'rms1err' 0 33 'rmserr' 0 34 'simulationvars_m'
-0 35 'temp' 0 36 'temp_ref' 0 37 'u' 0 38 'ucon' 0 39 'uo' 0 40 'up' 0
-41 'uvel' 0 42 'v' 0 43 'vel_ref' 0 44 'vvel' 0 45 'wp' 0 46 'xp' 0 47)
+'inadv' 0 15 'incell' 0 16 'ires' 0 17 'ivisc' 0 18 'jmax' 0 19 'jmin' 0
+20 'jncell' 0 21 'jres' 0 22 'length_ref' 0 23 'mach' 0 24 'mach_ref' 0
+25 'mu_ref' 0 26 'nadv' 0 27 'ngl' 0 28 'nmax' 0 29 'parameters_m' 0 30
+'pres' 0 31 're_ref' 0 32 'restart' 0 33 'rho' 0 34 'rms1err' 0 35
+'rmserr' 0 36 'simulationvars_m' 0 37 'temp' 0 38 'temp_ref' 0 39 'u' 0
+40 'ucon' 0 41 'uo' 0 42 'up' 0 43 'uvel' 0 44 'v' 0 45 'vel_ref' 0 46
+'vvel' 0 47 'wp' 0 48 'xp' 0 49)

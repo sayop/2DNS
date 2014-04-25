@@ -6,7 +6,7 @@ MODULE SimulationVars_m
    IMPLICIT NONE
 
    INTEGER :: IVISC
-   INTEGER :: NADV
+   INTEGER :: INADV, NADV
    INTEGER :: IMAX, JMAX, NGL, IMIN, JMIN, INCELL, JNCELL, &
               IRES, JRES, IFINISH
    REAL(KIND=wp), ALLOCATABLE, DIMENSION(:,:,:) :: XP
@@ -33,7 +33,7 @@ MODULE SimulationVars_m
    REAL(KIND=wp) :: cgamma
 
    ! Time integration variables
-   INTEGER :: NMAX
+   INTEGER :: NMAX, RESTART
 
    ! Upstream condition variables
    REAL(KIND=wp) :: DENS_REF, TEMP_REF, VEL_REF, LENGTH_REF, &

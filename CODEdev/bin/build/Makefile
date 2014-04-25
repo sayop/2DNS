@@ -119,6 +119,14 @@ io/ReadGrid.F90.o:
 	$(MAKE) -f CMakeFiles/cfd.x.dir/build.make CMakeFiles/cfd.x.dir/io/ReadGrid.F90.o
 .PHONY : io/ReadGrid.F90.o
 
+io/RestartDataOut.o: io/RestartDataOut.F90.o
+.PHONY : io/RestartDataOut.o
+
+# target to build an object file
+io/RestartDataOut.F90.o:
+	$(MAKE) -f CMakeFiles/cfd.x.dir/build.make CMakeFiles/cfd.x.dir/io/RestartDataOut.F90.o
+.PHONY : io/RestartDataOut.F90.o
+
 io/io.o: io/io.F90.o
 .PHONY : io/io.o
 
@@ -217,6 +225,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... io/ReadGrid.o"
+	@echo "... io/RestartDataOut.o"
 	@echo "... io/io.o"
 	@echo "... main/AUSMPWplus/AUSMPWplus.o"
 	@echo "... main/BCvisc/BCvisc.o"

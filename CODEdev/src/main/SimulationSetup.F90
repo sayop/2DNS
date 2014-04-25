@@ -24,6 +24,9 @@ CONTAINS
     ires = imax - imin + 1
     jres = jmax - jmin + 1
 
+    ! Set Initial NADV
+    INADV = 1
+
     ! x, y, z
     ALLOCATE(XP(3,incell,jncell))
 
@@ -108,16 +111,17 @@ CONTAINS
 
     DO i = imin, imax
       DO j = jmin, jmax
-        ! density
+        !Nondimensional density
         V(1,i,j) = U(1,i,j)
-        ! u-velocity
+        !Nondimensional u-velocity
         V(2,i,j) = U(2,i,j) / U(1,i,j)
-        ! v-velocity
+        !Nondimensional v-velocity
         V(3,i,j) = U(3,i,j) / U(1,i,j)
-        ! pressure
+        !Nondimensional pressure
         V(4,i,j) = (cgamma - 1.0_wp) * (&
                    U(4,i,j) - 0.5_wp * V(1,i,j) * (&
                    V(2,i,j) ** 2 + V(3,i,j) ** 2) )
+        !Nondimensional temperature
         V(5,i,j) = cgamma * mach_ref ** 2 * V(4,i,j) / V(1,i,j) 
         ! Stagnation enthalpy: H0
         H0(i,j) = (cgamma/(cgamma - 1.0_wp)) * V(4,i,j) / V(1,i,j) + &
