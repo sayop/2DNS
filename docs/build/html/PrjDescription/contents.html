@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Project description &mdash; 2DNS 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2DNS 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Code development" href="../CodeDevel/contents.html" />
+    <link rel="prev" title="Welcome to 2D N-S solver’s documentation!" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../CodeDevel/contents.html" title="Code development"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to 2D N-S solver’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2DNS 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="project-description">
+<h1>Project description<a class="headerlink" href="#project-description" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="given-task">
+<h2>Given task<a class="headerlink" href="#given-task" title="Permalink to this headline">¶</a></h2>
+<p>In this project, 2-D explicit Navier-Stokes solver (Hereafter called 2DNS code) has been developed. The 2DNS code was verified in this project by applying supersonic flow over a 10 deg. diamond airfoil. The test cases were employed in terms of inviscid and viscous conditions.</p>
+</div>
+<div class="section" id="governing-equations">
+<h2>Governing Equations<a class="headerlink" href="#governing-equations" title="Permalink to this headline">¶</a></h2>
+<p>Here, the 2-D, unsteady Navier-Stokes equations will be solved. The equations will be marched forward in time until a steady state solution is achieved. The transformed conservative form of 2-D Navier-Stokes equations can be written:</p>
+<div class="math">
+\[\frac{\partial \left ( \bar{U} / J \right )}{\partial t} + \frac{\partial \vec{F'}}{\partial \xi} + \frac{\partial \vec{G'}}{\partial \eta} = 0\]</div>
+<p>where the transformed state and inviscid flux vectors are</p>
+<div class="math">
+\[\begin{split}\vec{U} = \begin{bmatrix} \rho\\ \rho u\\ \rho v\\ E_{t} \end{bmatrix}\end{split}\]</div>
+<p>and transformed flux vector can be represented by:</p>
+<div class="math">
+\[\vec{F'} = \frac{1}{J} \left [ \xi_{x} (\vec{F}_{I} - \vec{F}_{V}) + \xi_{y} (\vec{G}_{I} - \vec{G}_{V}) \right ],\;\;\;\; \vec{G'} = \frac{1}{J} \left [ \eta_{x} (\vec{F}_{I} - \vec{F}_{V}) + \eta_{y} (\vec{G}_{I} - \vec{G}_{V}) \right ]\]</div>
+<p>Here <span class="math">\(\vec{F}_{I}\)</span> and <span class="math">\(\vec{F}_{V}\)</span> indicate the inviscid and viscous flux terms in x-direction, respectively. The same notation is employed to flux vector <span class="math">\(\vec{G}\)</span>. The total energy per unit volume and stagnation enthalpy per unit mass are defined by followings:</p>
+<div class="math">
+\[E_{t} = \frac{p}{\gamma - 1} + \frac{\rho}{2} \left ( u^{2} + v^{2} \right )\]</div>
+<div class="math">
+\[h_{0} = \frac{p \gamma}{\rho (\gamma - 1)} + \frac{1}{2} \left ( u^{2} + v^{2} \right )\]</div>
+<p>Detailed process for solving the Navier-Stokes equations will be repeated in the following sections.</p>
+</div>
+<div class="section" id="computational-domain">
+<h2>Computational Domain<a class="headerlink" href="#computational-domain" title="Permalink to this headline">¶</a></h2>
+<p>This project analyze the top half of a 10 deg. diamond airfoil so the location of point E is (x,y) = (0.5, 0.0882). Each grid point can be describd by (x,y) location or (<span class="math">\(i\)</span>, <span class="math">\(j\)</span>) location where the <span class="math">\(i\)</span> index is in the <span class="math">\(\xi\)</span> direction and the <span class="math">\(j\)</span> index is in the <span class="math">\(\eta\)</span> direction. The grid will consist of 65 points in the &#8220;<span class="math">\(i\)</span>&#8221; direction and 57 points in the &#8220;<span class="math">\(j\)</span>&#8221; direction. The inverse grid metrics must be evaluated at every grid point in the computational domain (including the boundaries). Use 2nd order accurate, central differences for interior points and 2nd order accurate, one-sided differences for boundary points. After the inverse metrics are computed, the grid Jacobian and grid metrics must be computed and stored at every location (including the boundaries)</p>
+<a class="reference internal image-reference" href="../_images/domain.png"><img alt="../_images/domain.png" src="../_images/domain.png" style="width: 60%;" /></a>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Project description</a><ul>
+<li><a class="reference internal" href="#given-task">Given task</a></li>
+<li><a class="reference internal" href="#governing-equations">Governing Equations</a></li>
+<li><a class="reference internal" href="#computational-domain">Computational Domain</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index.html"
+                        title="previous chapter">Welcome to 2D N-S solver&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../CodeDevel/contents.html"
+                        title="next chapter">Code development</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/PrjDescription/contents.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../CodeDevel/contents.html" title="Code development"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Welcome to 2D N-S solver’s documentation!"
+             >previous</a> |</li>
+        <li><a href="../index.html">2DNS 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Sayop Kim.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

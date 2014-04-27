@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Results and discussions &mdash; 2DNS 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2DNS 0.0.1 documentation" href="../index.html" />
+    <link rel="prev" title="Numerical Method" href="../Numerical/contents.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../Numerical/contents.html" title="Numerical Method"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2DNS 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="results-and-discussions">
+<h1>Results and discussions<a class="headerlink" href="#results-and-discussions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="computational-grid">
+<h2>Computational Grid<a class="headerlink" href="#computational-grid" title="Permalink to this headline">¶</a></h2>
+<p>The grid used in this project has a resolution of 65 X 57 in i- and j-directions as shown below. In this project, unsteady 2-dimensional Navier-Stokes solution is being resolved by performing the explicit time-integration.</p>
+<a class="reference internal image-reference" href="../_images/mesh.png"><img alt="../_images/mesh.png" src="../_images/mesh.png" style="width: 60%;" /></a>
+<p>&lt;Computational grid&gt;</p>
+</div>
+<div class="section" id="inviscid-solution-case-1-case-2">
+<h2>Inviscid solution (CASE 1 &amp; CASE 2)<a class="headerlink" href="#inviscid-solution-case-1-case-2" title="Permalink to this headline">¶</a></h2>
+<p>Following cases were achieved by running the 2DNS code with inviscid option off. The solution was obtained by running 40,000 iterations.</p>
+<p><strong>CASE 1</strong></p>
+<ul class="simple">
+<li>Inviscid solution</li>
+<li>1st order accuracy (CFL = 0.5)</li>
+</ul>
+<p>For the first order accurate solution, central differencing was applied to solve the inviscid flux terms with AUSMPW+ scheme and to resolve the first derivatives in shear stress and heat flux terms. The following figure represents the fully developed shock waves across the airfoil in terms of local Mach number.</p>
+<a class="reference internal image-reference" href="../_images/Mach_CASE1.png"><img alt="../_images/Mach_CASE1.png" src="../_images/Mach_CASE1.png" style="width: 60%;" /></a>
+<p>&lt;Contour plot of Mach number: CASE 1&gt;</p>
+<p><strong>CASE 2</strong></p>
+<ul class="simple">
+<li>2nd order accurate (CFL = 0.5)</li>
+<li>with basic minmod limiter</li>
+</ul>
+<p>For the second approach to resolve the inviscid solution, the fully upwind scheme for extrapolation was employed based on the characteristics wave direction. Then the basic minmod limiter was turned on to get TVD(Total Variation Diminishing) solution.</p>
+<a class="reference internal image-reference" href="../_images/Mach_CASE2.png"><img alt="../_images/Mach_CASE2.png" src="../_images/Mach_CASE2.png" style="width: 60%;" /></a>
+<p>&lt;Contour plot of Mach number: CASE 2&gt;</p>
+<a class="reference internal image-reference" href="../_images/Pressure_CASE1and2.png"><img alt="../_images/Pressure_CASE1and2.png" src="../_images/Pressure_CASE1and2.png" style="width: 60%;" /></a>
+<p>&lt;Comparison of static pressure along the bottom wall boundary&gt;</p>
+<a class="reference internal image-reference" href="../_images/RMSlog_CASE1and2.png"><img alt="../_images/RMSlog_CASE1and2.png" src="../_images/RMSlog_CASE1and2.png" style="width: 60%;" /></a>
+<p>&lt;Comparison of RMS error log&gt;</p>
+</div>
+<div class="section" id="viscous-flow-solution-case-3-case-4">
+<h2>Viscous flow solution (CASE 3 &amp; CASE 4)<a class="headerlink" href="#viscous-flow-solution-case-3-case-4" title="Permalink to this headline">¶</a></h2>
+<p>Following cases were achieved by running the 2DNS code with inviscid option on. The solution was obtained by running 40,000 iterations.</p>
+<p><strong>CASE 3</strong></p>
+<ul class="simple">
+<li>Navier-Storkes solution</li>
+<li>2nd order accurate (CFL = 0.5)</li>
+<li>with basic minmod limiter</li>
+<li>Adiabatic wall BC</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/Mach_CASE3.png"><img alt="../_images/Mach_CASE3.png" src="../_images/Mach_CASE3.png" style="width: 60%;" /></a>
+<p>&lt;Contour plot of Mach number: CASE 3&gt;</p>
+<p><strong>CASE 4</strong></p>
+<ul class="simple">
+<li>Navier-Storkes solution</li>
+<li>2nd order accurate (CFL = 0.5)</li>
+<li>with basic minmod limiter</li>
+<li>Isothermal wall BC (<span class="math">\(T_{wall}\)</span> = 300 k)</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/Mach_CASE4.png"><img alt="../_images/Mach_CASE4.png" src="../_images/Mach_CASE4.png" style="width: 60%;" /></a>
+<p>&lt;Contour plot of Mach number: CASE 4&gt;</p>
+<a class="reference internal image-reference" href="../_images/Pressure_CASE3and4.png"><img alt="../_images/Pressure_CASE3and4.png" src="../_images/Pressure_CASE3and4.png" style="width: 60%;" /></a>
+<p>&lt;Comparison of static pressure along the bottom wall boundary&gt;</p>
+<a class="reference internal image-reference" href="../_images/RMSlog_CASE3and4.png"><img alt="../_images/RMSlog_CASE3and4.png" src="../_images/RMSlog_CASE3and4.png" style="width: 60%;" /></a>
+<p>&lt;Comparison of RMS error log&gt;</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Results and discussions</a><ul>
+<li><a class="reference internal" href="#computational-grid">Computational Grid</a></li>
+<li><a class="reference internal" href="#inviscid-solution-case-1-case-2">Inviscid solution (CASE 1 &amp; CASE 2)</a></li>
+<li><a class="reference internal" href="#viscous-flow-solution-case-3-case-4">Viscous flow solution (CASE 3 &amp; CASE 4)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Numerical/contents.html"
+                        title="previous chapter">Numerical Method</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/Results/contents.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../Numerical/contents.html" title="Numerical Method"
+             >previous</a> |</li>
+        <li><a href="../index.html">2DNS 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Sayop Kim.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

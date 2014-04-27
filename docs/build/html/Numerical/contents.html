@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Numerical Method &mdash; 2DNS 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="2DNS 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Results and discussions" href="../Results/contents.html" />
+    <link rel="prev" title="Code development" href="../CodeDevel/contents.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../Results/contents.html" title="Results and discussions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../CodeDevel/contents.html" title="Code development"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">2DNS 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="numerical-method">
+<h1>Numerical Method<a class="headerlink" href="#numerical-method" title="Permalink to this headline">¶</a></h1>
+<p>During each time-integration step, the code calculate the fluxes <span class="math">\(\vec{F'}_{i+1/2,j}\)</span> at every &#8220;<span class="math">\(i\)</span>&#8221; half-point locations, and <span class="math">\(\vec{G'}_{i,j+1/2}\)</span> at every &#8220;<span class="math">\(j\)</span>&#8221; half-point locations. In order to obtain the flux terms properly treated with consideration of characteristics of wave propagation, MUSCL differencing should first be used to extrapolate the state vectors to every half point locations. After then AUSMPW+ scheme applies to those points for solving the inviscid flux terms. In addition, to evaluate the viscous flux terms, shear stress and heat flux terms should then be calculated at every half-points.</p>
+<div class="section" id="flux-vector-evaluation">
+<h2>Flux vector evaluation<a class="headerlink" href="#flux-vector-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>Here, the description and formulation of AUSMPW+ scheme are not repeated. The viscous flux vectors in the generalized coordinates can then be evaluated by solving the following forms</p>
+<div class="math">
+\[\vec{F}_{V}' = \frac{1}{J}\left ( \xi_{x} \vec{F}_{V} + \xi_{y} \vec{G}_{V} \right )\]\[\vec{G}_{V}' = \frac{1}{J}\left ( \eta_{x} \vec{F}_{V} + \eta_{y} \vec{G}_{V} \right )\]</div>
+<p>The above froms can be rearranged to the following form composed of shear stress and heat flux terms:</p>
+<div class="math">
+\[\begin{split}\vec{F}_{V}' \: \text{or} \: \vec{G}_{V}' = \frac{1}{J}\begin{bmatrix} 0 \\ m_{x} \tau_{xx} + m_{y} \tau_{xy}\\ m_{x} \tau_{xy} + m_{y} \tau_{yy}\\ m_{x}\left ( u \tau_{xx} + v \tau_{xy} - q_{x} \right ) + m_{y} \left ( u \tau_{xy} + v \tau_{yy} - q_{y} \right ) \end{bmatrix}\end{split}\]</div>
+<p>where,</p>
+<div class="math">
+\[m_{x} = \xi_{x} \:\:\: \text{and} \:\:\: m_{y} = \xi_{y} \:\:\: \text{for} \:\:\: \vec{F}_{V}'\]\[m_{x} = \eta_{x} \:\:\: \text{and} \:\:\: m_{y} = \eta_{y} \:\:\: \text{for} \:\:\: \vec{G}_{V}'\]</div>
+<p>The nondimensional form of shear stress and heat flux terms are given by:</p>
+<div class="math">
+\[\tau_{xx} = \frac{2\mu}{3\text{Re}_{L}} \left ( 2 \frac{\partial u}{\partial x} - \frac{\partial v}{\partial y} \right )\]\[\tau_{yy} = \frac{2\mu}{3\text{Re}_{L}} \left ( 2 \frac{\partial v}{\partial y} - \frac{\partial u}{\partial x} \right )\]\[\tau_{xy} = \frac{\mu}{\text{Re}_{L}} \left ( 2 \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x} \right )\]\[q_{x} = - \frac{\mu}{(\gamma - 1)M_{\infty}^{2} \text{Re}_{L} \text{Pr}} \frac{\partial T}{\partial x}\]\[q_{y} = - \frac{\mu}{(\gamma - 1)M_{\infty}^{2} \text{Re}_{L} \text{Pr}} \frac{\partial T}{\partial y}\]</div>
+<p>where <span class="math">\(M_{\infty}\)</span> is the free stream Mach number,</p>
+<div class="math">
+\[M_{\infty} = \frac{V_{\infty}}{\sqrt{\gamma R T_{\infty}}}\]</div>
+<p>and the perfect gas equations of state become</p>
+<div class="math">
+\[p = (\gamma - 1) \rho e\]\[T = \frac{\rho M_{\infty}^{2} p}{\rho}\]</div>
+<p>Note that the above equations should be evaluated by non-dimensional forms.</p>
+<p>The coefficients of viscosity and thermal conductivity can be related to the thermodynamic variables according to the gas kinetic theory. Based on this theory, Sutherland&#8217;s formulas can be applied to evaluate the mass and thermal diffusivity by solving:</p>
+<div class="math">
+\[\mu = C_{1} \frac{T^{3/2}}{T + C_{2}} \:\: , \:\:\: k = C_{3} \frac{T^{3/2}}{T + C_{4}}\]</div>
+<p>where <span class="math">\(C_{1}\)</span> to <span class="math">\(C_{4}\)</span> are constants for a given gas. For air at moderate temperatures, <span class="math">\(C_{1} = 1.458 \times 10^{-6}, :math:`C_{2} = 110.4\)</span>, <span class="math">\(C_{3} = 2.495 \times 10^{-3}\)</span> and <span class="math">\(C_{4} = 194\)</span> in SI units. Note that the temperature <span class="math">\(T\)</span> here must be here assumed to be dimenional variable in SI unit.</p>
+<p>In this project, the Prandtl number is assumed to variable based on the following definition:</p>
+<div class="math">
+\[\text{Pr} = \frac{c_{p} \mu}{k}\]</div>
+</div>
+<div class="section" id="initial-conditions">
+<h2>Initial Conditions<a class="headerlink" href="#initial-conditions" title="Permalink to this headline">¶</a></h2>
+<p>At the beginning of simulation, the 2DNS code sets the initial condition. After then the code set the boundary conditions at every time step. The initial conditions at all grid points is set on the basis of following pre-specified flow quantities in nondimensional forms:</p>
+<div class="math">
+\[M = 2.0, \;\;\; \rho = 1.0,\; \;\; \; u = 1.0,\; \;\; \;v = 1.0, \; \;\; \; \gamma = 1.4,\; \;\; \; p = \frac{1}{\gamma M^{2}}, \;\;\; T = 1.0\]</div>
+<p>The reference free stream conditions used to nondimensionalize the flow variables are given by:</p>
+<div class="math">
+\[\rho_{\infty} = 0.01 [\text{kg}/\text{m}^{3}], \;\;\; T_{\infty} = 300 [\text{K}], \;\;\; V_{\infty} = 694.44 [\text{m}/\text{sec}], \;\;\; L_{\infty} = 1.0 [\text{m}]\]</div>
+</div>
+<div class="section" id="boundary-conditions">
+<h2>Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this headline">¶</a></h2>
+<p>The flow is assumed to be coming in and blowing out at both inlet and outlet under a supersonic condition. Thus the following boundary conditions can be suitable:</p>
+<p>Inflow: <span class="math">\(\vec{u}_{1,j}^{n}\)</span> = fixed at initial conditions at every time step</p>
+<p>Outflow: <span class="math">\(\vec{u}_{imax,j}^{n} = \vec{u}_{imax - 1,j}^{n}\)</span> (1st order extrapolation for all n)</p>
+<p>Inviscid wall (top): No velocity in the <span class="math">\(\eta\)</span> direction. The 2DNS code uses a 2nd order extrapolation that is described in the 3rd computer project assignment.</p>
+<p><strong>Bottom wall</strong>:</p>
+<p>In this project, two different wall boundary conditions are employed based on the treatment of wall temperature: adiabatic wall and isothermal wall boundaries. For the adiabatic wall boundary condition, the heat flux normal to the surface is enforced to be zero by:</p>
+<div class="math">
+\[T_{i,1} = T_{i,2}\]</div>
+<p>For the isothermal wall boundary, the pre-specified wall temperature is applied to every <span class="math">\(j = 1\)</span> node points. In this project, 300 K is applied to the wall temperature as isothermal boundary condition.</p>
+<p>In addition to the wall temperature BC, viscous wall boundary should be taken account. This can be made by assuming no-slip wall boundary for the moderate gas pressure. In this approach, the velocity right at the wall is set to zero. Then the surface pressure is calculated from the assumption that the normal component of the momentum equation is zero. This can be implemented by resolving the following relation for a non-orthogonal grid with no-slip condition:</p>
+<div class="math">
+\[\left ( x_{\xi}^{2} + y_{\xi}^{2} \right )\frac{\partial p}{\partial \eta} = \left ( x_{\xi} x_{\eta} + y_{\xi} y_{\eta} \right ) \frac{\partial p}{\partial \xi}\]</div>
+<p>From the pressure and temperature resolved above, the density is then enforced by solving the gas equations of state.</p>
+</div>
+<div class="section" id="convergence-log-rms-error">
+<h2>Convergence Log (RMS error)<a class="headerlink" href="#convergence-log-rms-error" title="Permalink to this headline">¶</a></h2>
+<p>In order to see the convergence history, the 2DNS code calculates the following RMS error at every time step:</p>
+<div class="math">
+\[\text{RMS}^{n} = \sqrt{\frac{1}{N}\sum_{m=1}^{4} \sum_{i=1}^{imax} \sum_{j=1}^{jmax} \left [ \left ( \vec{U}_{i,j}^{n+1} - \vec{U}_{i,j}^{n} \right )^{2} \right ]}\]</div>
+<p>This error log was used for checking convergence history only not for the termination of program. Every cases in this project was run by 40,000 iterations.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Numerical Method</a><ul>
+<li><a class="reference internal" href="#flux-vector-evaluation">Flux vector evaluation</a></li>
+<li><a class="reference internal" href="#initial-conditions">Initial Conditions</a></li>
+<li><a class="reference internal" href="#boundary-conditions">Boundary Conditions</a></li>
+<li><a class="reference internal" href="#convergence-log-rms-error">Convergence Log (RMS error)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../CodeDevel/contents.html"
+                        title="previous chapter">Code development</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Results/contents.html"
+                        title="next chapter">Results and discussions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/Numerical/contents.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../Results/contents.html" title="Results and discussions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../CodeDevel/contents.html" title="Code development"
+             >previous</a> |</li>
+        <li><a href="../index.html">2DNS 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Sayop Kim.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -31,4 +31,4 @@ kappa		-1.0
 visc		1
 wallT		-1.0
 #Data Post-Processing (BL profile)
-xLoc            -0.25
+xLoc            0.0
