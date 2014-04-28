@@ -64,7 +64,7 @@ The coefficients of viscosity and thermal conductivity can be related to the the
 
    \mu = C_{1} \frac{T^{3/2}}{T + C_{2}} \:\: , \:\:\: k = C_{3} \frac{T^{3/2}}{T + C_{4}}
 
-where :math:`C_{1}` to :math:`C_{4}` are constants for a given gas. For air at moderate temperatures, :math:`C_{1} = 1.458 \times 10^{-6}, :math:`C_{2} = 110.4`, :math:`C_{3} = 2.495 \times 10^{-3}` and :math:`C_{4} = 194` in SI units. Note that the temperature :math:`T` here must be here assumed to be dimenional variable in SI unit.
+where :math:`C_{1}` to :math:`C_{4}` are constants for a given gas. For air at moderate temperatures, :math:`C_{1} = 1.458 \times 10^{-6}`, :math:`C_{2} = 110.4`, :math:`C_{3} = 2.495 \times 10^{-3}` and :math:`C_{4} = 194` in SI units. Note that the temperature :math:`T` here must be here assumed to be dimenional variable in SI unit.
 
 In this project, the Prandtl number is assumed to variable based on the following definition:
 
