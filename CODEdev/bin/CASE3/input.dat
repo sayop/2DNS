@@ -18,9 +18,9 @@ Uvel_ref	694.44
 Leng_ref	1.0
 Cp		1003.5
 #Simulation parameters
-restart		1
+restart		0
 nmax		40000
-CFL		0.5
+CFL		0.8
 errorLimit	1e-09
 #AUSMPW+ parameters
 alpha		0.0

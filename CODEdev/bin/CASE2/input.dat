@@ -20,7 +20,7 @@ Cp		1003.5
 #Simulation parameters
 restart		0
 nmax		40000
-CFL		0.5
+CFL		0.7
 errorLimit	1e-09
 #AUSMPW+ parameters
 alpha		0.0

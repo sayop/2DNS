@@ -20,7 +20,7 @@ Cp		1003.5
 #Simulation parameters
 restart		0
 nmax		40000
-CFL		0.85
+CFL		0.5
 errorLimit	1e-09
 #AUSMPW+ parameters
 alpha		0.0
@@ -28,8 +28,8 @@ epsil		0
 limiter		0
 kappa		0.0
 #Viscous solver parameters
-visc		0
-wallT		0.0
+visc		1
+wallT		300.0
 #Data Post-Processing (BL profile)
-xLoc            0.0
+xLoc            -0.25
 
